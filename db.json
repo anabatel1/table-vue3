@@ -1,0 +1,85 @@
+{
+  "items": [
+    {
+      "name": "Creme Brulee",
+      "identifier": "DES_01",
+      "id": 10001,
+      "created": "09/24/2022",
+      "count": 20,
+      "dish_type": "Dessert",
+      "status": "available"
+    },
+    {
+      "name": "Chocolate Cake",
+      "identifier": "DES_002",
+      "id": 10002,
+      "created": "11/12/2022",
+      "count": 5,
+      "dish_type": "Dessert",
+      "status": "unavailable"
+    },
+    {
+      "name": "Egg Salad Sandwich",
+      "identifier": "VEG_001",
+      "id": 10003,
+      "created": "10/01/2022",
+      "count": 15,
+      "dish_type": "Vegetarian",
+      "status": "available"
+    },
+    {
+      "name": "Hamburger",
+      "identifier": "MAIN_002",
+      "id": 10004,
+      "created": "10/10/2022",
+      "count": 89,
+      "dish_type": "Main",
+      "status": "available"
+    },
+    {
+      "name": "Tom Kha Kai",
+      "identifier": "SOUP_005",
+      "id": 10005,
+      "created": "10/10/2022",
+      "count": 44,
+      "dish_type": "Soup",
+      "status": "available"
+    },
+    {
+      "name": "Ragu Bolognese",
+      "identifier": "MAIN_006",
+      "id": 10006,
+      "created": "07/05/2022",
+      "count": 23,
+      "dish_type": "Main",
+      "status": "available"
+    },
+    {
+      "name": "Buttered Noodles",
+      "identifier": "CLD_001",
+      "id": 10007,
+      "created": "01/03/2023",
+      "count": 66,
+      "dish_type": "Children",
+      "status": "available"
+    },
+    {
+      "name": "Margherita Pizza",
+      "identifier": "CLD_002",
+      "id": 10008,
+      "created": "01/02/2023",
+      "count": 13,
+      "dish_type": "Children",
+      "status": "unavailable"
+    },
+    {
+      "name": "Chickpea-Feta Bowl",
+      "identifier": "VEG_002",
+      "id": 10009,
+      "created": "01/02/2023",
+      "count": 11,
+      "dish_type": "Vegetarian",
+      "status": "unavailable"
+    }
+  ]
+}
