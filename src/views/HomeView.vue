@@ -5,6 +5,7 @@ import type { Item } from "@/stores/items";
 import { storeToRefs } from "pinia";
 import TableHeaders from "@/components/TableHeaders.vue";
 import TableRows from "@/components/TableRows.vue";
+import TableFooter from "@/components/TableFooter.vue";
 import Filters from "@/components/FiltersSection.vue";
 
 const { store } = fetchItems();
@@ -92,6 +93,10 @@ const filteredItems = computed(() => sortedBySelection.value);
       <table class="table w-full">
         <TableHeaders />
         <TableRows :filteredItems="filteredItems" />
+        <TableFooter
+          :itemsLength="items.length"
+          :filteredItemsLength="filteredItems.length"
+        />
       </table>
     </div>
   </main>

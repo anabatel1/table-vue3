@@ -2,7 +2,7 @@
   "items": [
     {
       "name": "Creme Brulee",
-      "identifier": "DES_01",
+      "identifier": "DES_001",
       "id": 10001,
       "created": "09/24/2022",
       "count": 20,
@@ -29,7 +29,7 @@
     },
     {
       "name": "Hamburger",
-      "identifier": "MAIN_002",
+      "identifier": "MAIN_001",
       "id": 10004,
       "created": "10/10/2022",
       "count": 89,
@@ -38,7 +38,7 @@
     },
     {
       "name": "Tom Kha Kai",
-      "identifier": "SOUP_005",
+      "identifier": "SOUP_001",
       "id": 10005,
       "created": "10/10/2022",
       "count": 44,
@@ -47,7 +47,7 @@
     },
     {
       "name": "Ragu Bolognese",
-      "identifier": "MAIN_006",
+      "identifier": "MAIN_002",
       "id": 10006,
       "created": "07/05/2022",
       "count": 23,
