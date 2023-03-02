@@ -10,18 +10,18 @@ const props = defineProps<{
 
 async function removeItem() {
   const store = useItemsStore();
-  const result = await store.removeItem(props?.value?.id);
+  const result = await store.removeItem(props.value.id);
 
   const toast = useToast();
-  if (result?.type === "success") {
-    toast.success(`Successfully deleted "${props?.value?.name}"`, {
+  if (result.type === "success") {
+    toast.success(`Successfully deleted "${props.value.name}"`, {
       timeout: 2000,
     });
 
     return;
   }
 
-  toast.error(`Could not delete "${props?.value?.name}"`, {
+  toast.error(`Could not delete "${props.value.name}"`, {
     timeout: 2000,
   });
 }
@@ -31,7 +31,7 @@ async function removeItem() {
   <div class="flex justify-center align-middle">
     <XCircleIcon
       class="h-7 w-7 text-primary hover:text-secondary-content cursor-pointer"
-      @click="removeItem"
+      @click.stop="removeItem"
     />
   </div>
 </template>

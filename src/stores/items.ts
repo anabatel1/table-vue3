@@ -1,5 +1,6 @@
-import { ref, computed } from "vue";
+import { ref, computed, type Ref } from "vue";
 import { defineStore } from "pinia";
+
 import axios from "axios";
 
 // TODO: extract into an environment variable
@@ -39,10 +40,14 @@ const formatFilters = (items: string[]) =>
  */
 export const useItemsStore = defineStore("items", () => {
   // State
-  const list = ref([] as Item[]);
-  const sortBy = ref({ sortKey: "name", sortOrder: "ascending" } as SortBy);
-  const filterDishType = ref([] as Item["dish_type"][]);
-  const filterStatusType = ref([] as Item["status"][]);
+  const list: Ref<Item[]> = ref([]);
+  const currentItem: Ref<Item> = ref({} as Item);
+  const sortBy: Ref<SortBy> = ref<SortBy>({
+    sortKey: "name",
+    sortOrder: "ascending",
+  });
+  const filterDishType = ref<Item["dish_type"][]>([]);
+  const filterStatusType = ref<Item["status"][]>([]);
   const sortingOptions = ref({
     date: (a: Item, b: Item) =>
       new Date(b.created).getTime() - new Date(a.created).getTime(),
@@ -55,16 +60,17 @@ export const useItemsStore = defineStore("items", () => {
   });
 
   // Getters
-  const listItems = computed<Item[]>(() => list.value);
+  const listItems = computed(() => list.value);
   const itemHeaders = computed(
     () => Object.keys(listItems.value[0] || {}) as ItemHeaders[]
   );
 
-  const nonSortableHeaders = computed(() => ["remove"] as NonSortableHeaders[]);
+  const nonSortableHeaders = computed<NonSortableHeaders[]>(() => ["remove"]);
 
-  const headers = computed(
-    () => [...itemHeaders.value, ...nonSortableHeaders.value] as Headers[]
-  );
+  const headers = computed<Headers[]>(() => [
+    ...itemHeaders.value,
+    ...nonSortableHeaders.value,
+  ]);
 
   const dishTypes = computed(() => {
     const extractedDishTypes = list.value.map((el) => el.dish_type);
@@ -88,16 +94,31 @@ export const useItemsStore = defineStore("items", () => {
     sortBy.value = sortPreference;
   }
 
-  async function fetchItems() {
-    const response = await axios
-      .get(`${dbUrl}/items`)
-      .then((res) => res?.data || [])
-      .catch((err) => console.warn(err));
+  async function fetchItems(): Promise<Item[]> {
+    try {
+      const response = await axios.get<Item[]>(`${dbUrl}/items`);
 
-    list.value = response;
+      list.value = response.data || [];
+      return list.value;
+    } catch (err) {
+      list.value = [];
+      throw new Error(err as string);
+    }
   }
 
-  async function removeItem(id: number) {
+  async function fetchItem(id: Item["id"]): Promise<Item> {
+    try {
+      const response = await axios.get<Item>(`${dbUrl}/items/${id}`);
+
+      currentItem.value = response.data || {};
+      return currentItem.value;
+    } catch (err) {
+      currentItem.value = {} as Item;
+      throw new Error(err as string);
+    }
+  }
+
+  async function removeItem(id: number): Promise<{ type: string }> {
     const result = await axios
       .delete(`${dbUrl}/items/${id}`)
       .then(() => {
@@ -133,5 +154,7 @@ export const useItemsStore = defineStore("items", () => {
     itemHeaders,
     nonSortableHeaders,
     removeItem,
+    fetchItem,
+    currentItem,
   };
 });

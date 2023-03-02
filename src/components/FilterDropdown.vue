@@ -1,8 +1,8 @@
 <script setup lang="ts">
 defineProps<{
   title: string;
-  dropdownItems: Array<string>;
-  selectedFilter: Array<string>;
+  dropdownItems: string[];
+  selectedFilter: string[];
 }>();
 </script>
 

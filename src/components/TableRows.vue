@@ -2,6 +2,7 @@
 import { defineAsyncComponent, computed } from "vue";
 import { useItemsStore, type Item } from "@/stores/items";
 import type { Component } from "vue";
+import { useRouter, useRoute } from "vue-router";
 
 defineProps<{
   filteredItems: Item[];
@@ -16,6 +17,8 @@ interface DynamicComponent {
 const store = useItemsStore();
 const headers = computed(() => store.headers);
 
+const router = useRouter();
+
 const dynamicComponents: DynamicComponent = {
   status: defineAsyncComponent(() => import("../components/FieldStatus.vue")),
   remove: defineAsyncComponent(() => import("../components/FieldRemove.vue")),
@@ -29,12 +32,30 @@ function isDynamicComponentKey(key: string): key is keyof DynamicComponent {
 function loadComponent(key: string): Component | undefined {
   return isDynamicComponentKey(key) ? dynamicComponents[key] : undefined;
 }
+
+function handleRowClick(itemId: Item["id"]) {
+  router.push({
+    name: "details",
+    params: {
+      id: itemId,
+    },
+  });
+}
 </script>
 
 <template>
   <tbody>
-    <tr v-for="item in filteredItems" :key="item.id" class="hover">
-      <td v-for="(header, index) in headers" :key="`${item.id}-td-${index}`">
+    <tr
+      v-for="item in filteredItems"
+      :key="item.id"
+      class="hover"
+      @click="() => handleRowClick(item.id)"
+    >
+      <td
+        v-for="(header, index) in headers"
+        :key="`${item.id}-td-${index}`"
+        class="whitespace-pre-wrap"
+      >
         <component
           v-if="loadComponent(header)"
           :is="loadComponent(header)"

@@ -7,15 +7,15 @@ import TableHeaders from "@/components/TableHeaders.vue";
 import TableRows from "@/components/TableRows.vue";
 import TableFooter from "@/components/TableFooter.vue";
 import Filters from "@/components/FiltersSection.vue";
+import { useQuery } from "@tanstack/vue-query";
 
-const { store } = fetchItems();
+const store = useItemsStore();
 
-function fetchItems() {
-  const store = useItemsStore();
-  store.fetchItems();
-
-  return { store };
-}
+// Query
+const { isLoading, isError, error } = useQuery({
+  queryKey: ["items"],
+  queryFn: store.fetchItems,
+});
 
 const {
   listItems: items,
@@ -88,16 +88,22 @@ const filteredItems = computed(() => sortedBySelection.value);
 
 <template>
   <main>
-    <Filters />
-    <div class="overflow-x-auto w-full mt-3">
-      <table class="table w-full">
-        <TableHeaders />
-        <TableRows :filteredItems="filteredItems" />
-        <TableFooter
-          :itemsLength="items.length"
-          :filteredItemsLength="filteredItems.length"
-        />
-      </table>
-    </div>
+    <template v-if="isLoading"> loading </template>
+    <template v-else-if="isError">
+      {{ error }}
+    </template>
+    <template v-else>
+      <Filters />
+      <div class="overflow-x-auto w-full mt-3">
+        <table class="table w-full">
+          <TableHeaders />
+          <TableRows :filteredItems="filteredItems" />
+          <TableFooter
+            :itemsLength="items.length"
+            :filteredItemsLength="filteredItems.length"
+          />
+        </table>
+      </div>
+    </template>
   </main>
 </template>
