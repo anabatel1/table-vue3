@@ -3,21 +3,28 @@
         {
             "name": "/src/App.vue",
             "props": "",
-            "size": 324,
-            "lastModifiedTime": 1676880093267,
+            "size": 379,
+            "lastModifiedTime": 1677662790007,
+            "children": []
+        },
+        {
+            "name": "/src/components/FieldDate.vue",
+            "props": "",
+            "size": 196,
+            "lastModifiedTime": 1677007604776,
             "children": []
         },
         {
             "name": "/src/components/FieldRemove.vue",
             "props": "",
-            "size": 880,
-            "lastModifiedTime": 1676882526815,
+            "size": 878,
+            "lastModifiedTime": 1677761452476,
             "children": [
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 }
             ]
@@ -25,42 +32,57 @@
         {
             "name": "/src/components/FieldStatus.vue",
             "props": "",
-            "size": 264,
-            "lastModifiedTime": 1676658338791,
+            "size": 274,
+            "lastModifiedTime": 1677004700184,
             "children": []
         },
         {
             "name": "/src/components/FilterDropdown.vue",
             "props": "",
-            "size": 1012,
-            "lastModifiedTime": 1676827204951,
+            "size": 1002,
+            "lastModifiedTime": 1677761378516,
             "children": []
         },
         {
             "name": "/src/components/FiltersSection.vue",
             "props": "",
-            "size": 1844,
-            "lastModifiedTime": 1676827297172,
+            "size": 1830,
+            "lastModifiedTime": 1677005840990,
             "children": [
                 {
                     "name": "/src/components/FilterDropdown.vue",
                     "props": "",
-                    "size": 1012,
-                    "lastModifiedTime": 1676827204951,
+                    "size": 1002,
+                    "lastModifiedTime": 1677761378516,
                     "children": []
                 },
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 },
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "/src/components/TableFooter.vue",
+            "props": "",
+            "size": 473,
+            "lastModifiedTime": 1677257346512,
+            "children": [
+                {
+                    "name": "/src/stores/items.ts",
+                    "props": "",
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 }
             ]
@@ -74,8 +96,8 @@
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 }
             ]
@@ -89,15 +111,15 @@
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 },
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 },
                 {
@@ -109,8 +131,8 @@
                         {
                             "name": "/src/stores/items.ts",
                             "props": "",
-                            "size": 3363,
-                            "lastModifiedTime": 1676881835151,
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
                             "children": []
                         }
                     ]
@@ -120,14 +142,29 @@
         {
             "name": "/src/components/TableRows.vue",
             "props": "",
-            "size": 1343,
-            "lastModifiedTime": 1676828079977,
+            "size": 1780,
+            "lastModifiedTime": 1677677857529,
             "children": [
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
+                    "children": []
+                }
+            ]
+        },
+        {
+            "name": "/src/views/DetailView.vue",
+            "props": "",
+            "size": 3450,
+            "lastModifiedTime": 1677776234344,
+            "children": [
+                {
+                    "name": "/src/stores/items.ts",
+                    "props": "",
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 }
             ]
@@ -135,21 +172,21 @@
         {
             "name": "/src/views/HomeView.vue",
             "props": "",
-            "size": 2735,
-            "lastModifiedTime": 1676828094270,
+            "size": 3139,
+            "lastModifiedTime": 1677662790008,
             "children": [
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 },
                 {
                     "name": "/src/stores/items.ts",
                     "props": "",
-                    "size": 3363,
-                    "lastModifiedTime": 1676881835151,
+                    "size": 3879,
+                    "lastModifiedTime": 1677761329859,
                     "children": []
                 },
                 {
@@ -161,15 +198,15 @@
                         {
                             "name": "/src/stores/items.ts",
                             "props": "",
-                            "size": 3363,
-                            "lastModifiedTime": 1676881835151,
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
                             "children": []
                         },
                         {
                             "name": "/src/stores/items.ts",
                             "props": "",
-                            "size": 3363,
-                            "lastModifiedTime": 1676881835151,
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
                             "children": []
                         },
                         {
@@ -181,8 +218,8 @@
                                 {
                                     "name": "/src/stores/items.ts",
                                     "props": "",
-                                    "size": 3363,
-                                    "lastModifiedTime": 1676881835151,
+                                    "size": 3879,
+                                    "lastModifiedTime": 1677761329859,
                                     "children": []
                                 }
                             ]
@@ -192,14 +229,29 @@
                 {
                     "name": "/src/components/TableRows.vue",
                     "props": "",
-                    "size": 1343,
-                    "lastModifiedTime": 1676828079977,
+                    "size": 1780,
+                    "lastModifiedTime": 1677677857529,
                     "children": [
                         {
                             "name": "/src/stores/items.ts",
                             "props": "",
-                            "size": 3363,
-                            "lastModifiedTime": 1676881835151,
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
+                            "children": []
+                        }
+                    ]
+                },
+                {
+                    "name": "/src/components/TableFooter.vue",
+                    "props": "",
+                    "size": 473,
+                    "lastModifiedTime": 1677257346512,
+                    "children": [
+                        {
+                            "name": "/src/stores/items.ts",
+                            "props": "",
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
                             "children": []
                         }
                     ]
@@ -207,28 +259,28 @@
                 {
                     "name": "/src/components/FiltersSection.vue",
                     "props": "",
-                    "size": 1844,
-                    "lastModifiedTime": 1676827297172,
+                    "size": 1830,
+                    "lastModifiedTime": 1677005840990,
                     "children": [
                         {
                             "name": "/src/components/FilterDropdown.vue",
                             "props": "",
-                            "size": 1012,
-                            "lastModifiedTime": 1676827204951,
+                            "size": 1002,
+                            "lastModifiedTime": 1677761378516,
                             "children": []
                         },
                         {
                             "name": "/src/stores/items.ts",
                             "props": "",
-                            "size": 3363,
-                            "lastModifiedTime": 1676881835151,
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
                             "children": []
                         },
                         {
                             "name": "/src/stores/items.ts",
                             "props": "",
-                            "size": 3363,
-                            "lastModifiedTime": 1676881835151,
+                            "size": 3879,
+                            "lastModifiedTime": 1677761329859,
                             "children": []
                         }
                     ]
@@ -238,14 +290,17 @@
     ],
     "count": {
         "/src/App.vue": 1,
+        "/src/components/FieldDate.vue": 1,
         "/src/components/FieldRemove.vue": 1,
-        "/src/stores/items.ts": 16,
+        "/src/stores/items.ts": 19,
         "/src/components/FieldStatus.vue": 1,
         "/src/components/FilterDropdown.vue": 3,
         "/src/components/FiltersSection.vue": 2,
+        "/src/components/TableFooter.vue": 2,
         "/src/components/TableHeader.vue": 3,
         "/src/components/TableHeaders.vue": 2,
         "/src/components/TableRows.vue": 2,
+        "/src/views/DetailView.vue": 1,
         "/src/views/HomeView.vue": 1
     }
 }
