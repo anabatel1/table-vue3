@@ -2,23 +2,22 @@
 import { useItemsStore } from "@/stores/items";
 import { storeToRefs } from "pinia";
 import { useRoute } from "vue-router";
-import { useQuery } from "@tanstack/vue-query";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/vue-query";
 import { computed } from "vue";
 import type { FormKitNode } from "@formkit/core";
+import { useToast } from "vue-toastification";
+import type { ItemForm } from "@/stores/items";
 
 const route = useRoute();
 const store = useItemsStore();
+const toast = useToast();
+const queryClient = useQueryClient();
 
 const itemId = Number(route.params.id);
 
 const { isLoading, isError } = useQuery({
   queryKey: ["item", itemId],
   queryFn: () => store.fetchItem(itemId),
-});
-
-const { isLoading: isLoadingItems, isError: isErrorItems } = useQuery({
-  queryKey: ["items"],
-  queryFn: store.fetchItems,
 });
 
 const { currentItem: item, listItems } = storeToRefs(store);
@@ -29,15 +28,37 @@ const allItemNames = computed(() =>
     .filter((el) => el !== item.value.name.toLowerCase())
 );
 
+const {
+  isLoading: isMutationLoading,
+  isError: isMutationError,
+  error: mutationError,
+  mutate,
+} = useMutation({
+  mutationFn: store.updateItem,
+  onError: async (error, variables) => {
+    toast.error(`Error when updating "${variables.name}"`, {
+      timeout: 2000,
+    });
+  },
+  onSuccess: async (data) => {
+    console.log("success data", data);
+    await queryClient.invalidateQueries({
+      queryKey: ["items", { id: itemId }],
+    });
+    toast.success(`Successfully updated "${data.name}"`, {
+      timeout: 2000,
+    });
+  },
+});
+
 function validDishName(node: FormKitNode) {
   // node.value is of type "unknown", but in this instance (dish name) it will always be a string
   const value = node.value as string;
   return !(value && allItemNames.value.includes(value.toLowerCase()));
 }
 
-const updateDish = async (formValues) => {
-  console.log("formValues", formValues);
-  await new Promise((r) => setTimeout(r, 5000));
+const updateDish = async (formValues: ItemForm) => {
+  mutate({ ...formValues, id: itemId });
 };
 
 const inputClasses = {
@@ -55,8 +76,10 @@ const selectClasses = {
 </script>
 
 <template>
-  <div v-if="isLoading || isLoadingItems">isLoading......</div>
-  <div v-else-if="isError || isErrorItems">Something went wrong...</div>
+  <div v-if="isLoading || isMutationLoading">isLoading......</div>
+  <div v-else-if="isError || isMutationError">
+    Something went wrong...{{ mutationError }}
+  </div>
   <main v-else>
     {{ JSON.stringify(item) }}
 
@@ -106,6 +129,7 @@ const selectClasses = {
         validation="required|min:0"
         label="Count"
         min="0"
+        v-model.number="item.count"
         :value="item.count"
         help="How many dishes are there?"
       />

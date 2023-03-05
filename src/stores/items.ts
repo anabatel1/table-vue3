@@ -13,7 +13,15 @@ export interface Item {
   created: string;
   count: number;
   dish_type: string;
-  status: string;
+  status: "available" | "unavailable";
+}
+
+export interface ItemForm {
+  count: Item["count"];
+  dish_type: Item["dish_type"];
+  name: Item["name"];
+  status: Item["status"];
+  id: Item["id"];
 }
 
 export interface SortBy {
@@ -138,6 +146,26 @@ export const useItemsStore = defineStore("items", () => {
     return result;
   }
 
+  async function updateItem(item: ItemForm): Promise<Item> {
+    const formattedItem = {
+      ...item,
+      identifier: `${item.dish_type.substring(0, 3).toUpperCase()}_${item.id}`,
+    };
+
+    try {
+      const result = await axios.put<Item>(
+        `${dbUrl}/items/${item.id}`,
+        formattedItem
+      );
+
+      currentItem.value = result.data || {};
+      return currentItem.value;
+    } catch (err) {
+      currentItem.value = {} as Item;
+      throw new Error(err as string);
+    }
+  }
+
   return {
     dishTypes,
     statuses,
@@ -156,5 +184,6 @@ export const useItemsStore = defineStore("items", () => {
     removeItem,
     fetchItem,
     currentItem,
+    updateItem,
   };
 });
